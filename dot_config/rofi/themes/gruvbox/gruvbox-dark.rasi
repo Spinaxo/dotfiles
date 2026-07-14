@@ -1,0 +1,179 @@
+/* ==========================================================================
+   Rofi color theme — modern (widget-based) rasi format
+
+   Based on the Gruvbox color scheme for Vim by morhetz
+   https://github.com/morhetz/gruvbox
+
+   File: gruvbox-dark.rasi
+   Desc: Gruvbox dark color theme for Rofi
+   Original author: bardisty <b@bah.im>
+   Source: https://github.com/bardisty/gruvbox-rofi
+   Rewritten for the current widget-based rasi theme format
+   (self-contained — no longer depends on gruvbox-common.rasi)
+   ========================================================================== */
+
+* {
+    /* Gruvbox dark colors */
+    gruvbox-dark-bg0:          #282828;
+    gruvbox-dark-bg0-soft:     #32302f;
+    gruvbox-dark-bg3:          #665c54;
+    gruvbox-dark-fg0:          #fbf1c7;
+    gruvbox-dark-fg1:          #ebdbb2;
+    gruvbox-dark-red-dark:     #cc241d;
+    gruvbox-dark-red-light:    #fb4934;
+    gruvbox-dark-yellow-dark:  #d79921;
+    gruvbox-dark-yellow-light: #fabd2f;
+    gruvbox-dark-gray:         #a89984;
+
+    /* Semantic colors */
+    background:            @gruvbox-dark-bg0;
+    background-alt:         @gruvbox-dark-bg0-soft;
+    foreground:             @gruvbox-dark-fg1;
+    border-color:           @gruvbox-dark-gray;
+
+    normal-background:      @background;
+    normal-foreground:      @foreground;
+    alternate-background:   @background-alt;
+    alternate-foreground:   @foreground;
+    selected-background:    @gruvbox-dark-bg3;
+    selected-foreground:    @gruvbox-dark-fg0;
+
+    active-background:      @gruvbox-dark-yellow-dark;
+    active-foreground:      @background;
+    urgent-background:      @gruvbox-dark-red-dark;
+    urgent-foreground:      @background;
+
+    selected-active-background: @gruvbox-dark-yellow-light;
+    selected-urgent-background: @gruvbox-dark-red-light;
+
+    background-color: transparent;
+    text-color:        @foreground;
+
+    font: "monospace 12";
+}
+
+window {
+    background-color: @background;
+    border:           1px;
+    border-color:     @border-color;
+    border-radius:    4px;
+    padding:           5px;
+    width:            40%;
+}
+
+mainbox {
+    children: [ inputbar, message, listview ];
+    spacing:  10px;
+    padding:  5px;
+}
+
+inputbar {
+    children:         [ prompt, entry ];
+    background-color: @background-alt;
+    text-color:        @foreground;
+    padding:           8px 10px;
+    border-radius:     4px;
+}
+
+prompt {
+    background-color: inherit;
+    text-color:        @gruvbox-dark-yellow-light;
+    padding:            0 6px 0 0;
+}
+
+entry {
+    background-color: inherit;
+    text-color:        inherit;
+    placeholder:      "Search...";
+    placeholder-color: @gruvbox-dark-gray;
+}
+
+message {
+    background-color: @background-alt;
+    border-radius:     4px;
+    padding:            8px 10px;
+}
+
+textbox {
+    text-color: @foreground;
+}
+
+listview {
+    background-color: transparent;
+    columns:           1;
+    lines:             8;
+    spacing:           2px;
+    scrollbar:         true;
+    fixed-height:      false;
+}
+
+scrollbar {
+    handle-color: @border-color;
+    handle-width: 4px;
+    padding:      0 0 0 4px;
+}
+
+element {
+    background-color: transparent;
+    text-color:        @normal-foreground;
+    padding:            6px 10px;
+    border-radius:      4px;
+}
+
+element normal.normal {
+    background-color: @normal-background;
+    text-color:        @normal-foreground;
+}
+
+element normal.urgent {
+    background-color: @urgent-background;
+    text-color:        @urgent-foreground;
+}
+
+element normal.active {
+    background-color: @active-background;
+    text-color:        @active-foreground;
+}
+
+element alternate.normal {
+    background-color: @alternate-background;
+    text-color:        @alternate-foreground;
+}
+
+element alternate.urgent {
+    background-color: @urgent-background;
+    text-color:        @urgent-foreground;
+}
+
+element alternate.active {
+    background-color: @active-background;
+    text-color:        @active-foreground;
+}
+
+element selected.normal {
+    background-color: @selected-background;
+    text-color:        @selected-foreground;
+}
+
+element selected.urgent {
+    background-color: @selected-urgent-background;
+    text-color:        @urgent-foreground;
+}
+
+element selected.active {
+    background-color: @selected-active-background;
+    text-color:        @active-foreground;
+}
+
+element-text {
+    background-color: inherit;
+    text-color:        inherit;
+    highlight:         bold italic;
+    vertical-align:    0.5;
+}
+
+element-icon {
+    background-color: inherit;
+    size:               1.2em;
+    padding:            0 6px 0 0;
+}
