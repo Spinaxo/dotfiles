@@ -1,0 +1,136 @@
+# ==============================
+# Interactive shell only
+# ==============================
+[[ $- != *i* ]] && return
+
+# ==============================
+# Fastfetch on new terminal
+# ==============================
+if command -v fetch >/dev/null 2>&1 && [[ -z "$SSH_CONNECTION" ]]; then
+    fetch
+fi
+
+# ==============================
+# History
+# ==============================
+HISTFILESIZE=10000
+HISTSIZE=5000
+HISTCONTROL=ignoredups:erasedups:ignorespace
+HISTTIMEFORMAT="%F %T "
+shopt -s histappend checkwinsize
+PROMPT_COMMAND='history -a'
+
+# ==============================
+# XDG
+# ==============================
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CACHE_HOME="$HOME/.cache"
+
+# ==============================
+# Editor
+# ==============================
+export EDITOR=nvim
+export VISUAL=nvim
+alias vi='nvim'
+alias vim='nvim'
+alias svi='sudo nvim'
+
+# ==============================
+# Completion
+# ==============================
+if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+fi
+bind "set completion-ignore-case on"
+bind "set show-all-if-ambiguous On"
+stty -ixon 2>/dev/null
+
+# ==============================
+# Safe file operations
+# ==============================
+alias cp='cp -i'
+alias mv='mv -i'
+
+if command -v trash >/dev/null 2>&1; then
+    alias rm='trash -v'
+else
+    alias rm='rm -i'
+fi
+
+# ==============================
+# LS & Navigation
+# ==============================
+alias ls='ls --color=auto -F'
+alias ll='ls -lah'
+alias la='ls -A'
+alias l='ls -CF'
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias home='cd ~'
+alias bd='cd "$OLDPWD"'
+
+# ==============================
+# Git
+# ==============================
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+alias gl='git pull'
+
+# ==============================
+# System helpers
+# ==============================
+alias cls='clear'
+alias dfh='df -h'
+alias du1='du -h --max-depth=1'
+alias ports='ss -tuln'
+alias tree='tree -CAhF --dirsfirst'
+alias ping='ping -c 10'
+alias ps='ps auxf'
+alias freshclam='sudo freshclam'
+
+# ==============================
+# Search improvements
+# ==============================
+if command -v rg >/dev/null 2>&1; then
+    alias grep='rg'
+fi
+
+alias h='history | grep'
+alias p='ps aux | grep'
+alias f='find . | grep'
+
+# ==============================
+# Docker cleanup (optional)
+# ==============================
+alias docker-clean='docker container prune -f && docker image prune -f && docker network prune -f && docker volume prune -f'
+
+# ==============================
+# Manpage colors
+# ==============================
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;31m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;32m'
+
+# ==============================
+# Starship prompt
+# ==============================
+if command -v starship >/dev/null 2>&1; then
+    eval "$(starship init bash)"
+fi
+
+# ==============================
+# User Alias
+# ==============================
+
+alias nano="micro"
+export PATH="$HOME/.local/bin:$PATH"
