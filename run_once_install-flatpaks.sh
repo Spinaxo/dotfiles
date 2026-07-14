@@ -2,10 +2,10 @@
 
 set -e
 
-flatpak remote-add --if-not-exists flathub \
+flatpak remote-add --user --if-not-exists flathub \
     https://flathub.org/repo/flathub.flatpakrepo
 
-flatpak install -y flathub \
+flatpak install --user -y flathub \
     com.spotify.Client \
     com.stremio.Stremio \
     com.vysp3r.ProtonPlus \
