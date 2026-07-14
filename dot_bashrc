@@ -31,8 +31,8 @@ export XDG_CACHE_HOME="$HOME/.cache"
 # ==============================
 # Editor
 # ==============================
-export EDITOR=nvim
-export VISUAL=nvim
+export EDITOR=micro
+export VISUAL=micro
 alias vi='nvim'
 alias vim='nvim'
 alias svi='sudo nvim'
