@@ -6,8 +6,8 @@
 # ==============================
 # Fastfetch on new terminal
 # ==============================
-if command -v fetch >/dev/null 2>&1 && [[ -z "$SSH_CONNECTION" ]]; then
-    fetch
+if command -v fastfetch >/dev/null 2>&1 && [[ -z "$SSH_CONNECTION" ]]; then
+    fastfetch
 fi
 
 # ==============================
