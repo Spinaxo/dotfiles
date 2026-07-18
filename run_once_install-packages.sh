@@ -11,7 +11,6 @@ packages=(
 
     # Terminal
     kitty
-    starship
     fastfetch
     btop
     tree
