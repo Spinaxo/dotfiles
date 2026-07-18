@@ -35,9 +35,6 @@ packages=(
     # Appearance
     papirus-icon-theme
     gtk2-engines-murrine
-    fonts-inter
-    fonts-noto
-    fonts-noto-ui-core
 
     # Utilities
     yt-dlp
