@@ -1,46 +1,47 @@
 #!/usr/bin/env bash
-
 set -e
-
 sudo apt update
 
-sudo apt install -y \
+packages=(
     # Development
-    git \
-    build-essential \
-    gdb \
-    micro \
-    \
+    git
+    build-essential
+    gdb
+    micro
+
     # Terminal
-    kitty \
-    starship \
-    fastfetch \
-    btop \
-    tree \
-    topgrade \
-    \
+    kitty
+    starship
+    fastfetch
+    btop
+    tree
+    topgrade
+
     # Containers
-    podman \
-    distrobox \
-    \
+    podman
+    distrobox
+
     # Sync
-    rclone \
-    \
+    rclone
+
     # Gaming
-    steam-installer \
-    wine \
-    mangohud \
-    gamemode \
-    \
+    steam-installer
+    wine
+    mangohud
+    gamemode
+
     # VPN
-    proton-vpn-gnome-desktop \
-    \
+    proton-vpn-gnome-desktop
+
     # Appearance
-    papirus-icon-theme \
-    gtk2-engines-murrine \
-    fonts-inter \
-    fonts-noto \
-    fonts-noto-ui-core \
-    \
+    papirus-icon-theme
+    gtk2-engines-murrine
+    fonts-inter
+    fonts-noto
+    fonts-noto-ui-core
+
     # Utilities
     yt-dlp
+)
+
+sudo apt install -y "${packages[@]}"
